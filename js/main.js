@@ -1279,3 +1279,36 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+// =========================
+// LOADING SCREEN
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const loader = document.getElementById("loading-screen");
+    const progress = document.querySelector(".loader-line span");
+    const percent = document.getElementById("loader-percent");
+
+    if (!loader || !progress || !percent) return;
+
+    let value = 0;
+
+    const loading = setInterval(() => {
+
+        value += Math.floor(Math.random() * 5) + 1;
+
+        if (value >= 100) {
+            value = 100;
+            clearInterval(loading);
+
+            setTimeout(() => {
+                loader.classList.add("loaded");
+            }, 350);
+        }
+
+        progress.style.width = value + "%";
+        percent.textContent = String(value).padStart(2, "0");
+
+    }, 35);
+
+});

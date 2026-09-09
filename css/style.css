@@ -3402,9 +3402,14 @@ html[dir="rtl"] .detail-content-grid {
 }
 
 .detail-list li::before {
-    content: "↗";
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
     margin-right: 6px;
-    color: #6B5140;
+    vertical-align: -3px;
+    flex: 0 0 16px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1.5' y='1.5' width='21' height='21' rx='5' fill='none' stroke='%236B5140' stroke-width='1.6'/%3E%3Cpath d='M7 17 17 7M9 7h8v8' fill='none' stroke='%236B5140' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .detail-tech-list {
@@ -3501,6 +3506,7 @@ html[dir="rtl"] .detail-slide-top {
 html[dir="rtl"] .detail-list li::before {
     margin-right: 0;
     margin-left: 6px;
+    transform: scaleX(-1);
 }
 
 html[dir="rtl"] .detail-process {
@@ -3741,9 +3747,24 @@ html[dir="rtl"] .credentials-heading p {
     }
 
     .detail-content-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 22px;
         overflow: visible;
         padding: 0;
+    }
+
+    .detail-list {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .detail-list li {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .detail-list li::before {
+        margin-top: 2px;
     }
 
     .project-slide-image-wrap {
@@ -3868,7 +3889,12 @@ html[dir="rtl"] .credentials-heading p {
     }
 
     .detail-content-grid {
-        gap: 14px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .detail-list {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -4195,4 +4221,525 @@ html[dir="rtl"] .project-detail-slide .detail-block {
     width: 100% !important;
     max-width: none !important;
     box-sizing: border-box !important;
+}
+
+/* =========================================
+   iPHONE — HERO IMAGE + JOB TITLE FIX
+========================================= */
+
+@media (max-width: 500px) {
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 32px);
+        padding-top: 45px;
+        padding-bottom: 35px;
+        gap: 32px;
+        text-align: center;
+    }
+
+    /* الصورة */
+    .hero-image {
+        order: 1;
+        width: 100%;
+        height: auto;
+        min-height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 0;
+    }
+
+    .hero-image img {
+        width: min(250px, 68vw);
+        height: auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* الدائرة حول الصورة */
+    .image-orbit {
+        width: min(270px, 74vw);
+        height: min(270px, 74vw);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* النص */
+    .hero-content {
+        order: 2;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    /* SOFTWARE ENGINEER */
+    .hero-content .eyebrow {
+        display: block;
+        width: 100%;
+        margin: 0 0 16px;
+        text-align: center;
+        font-size: 10px;
+        letter-spacing: 0.20em;
+        line-height: 1.5;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 12vw, 58px);
+        line-height: 1;
+        margin: 0;
+    }
+
+    .hero-description {
+        margin: 24px auto 0;
+        max-width: 330px;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        margin-top: 28px;
+        justify-content: center;
+    }
+}
+
+
+/* iPhone SE / small screens */
+@media (max-width: 380px) {
+
+    .hero {
+        padding-top: 30px;
+        gap: 24px;
+    }
+
+    .hero-image {
+        min-height: 230px;
+    }
+
+    .hero-image img {
+        width: 220px;
+    }
+
+    .image-orbit {
+        width: 240px;
+        height: 240px;
+    }
+
+    .hero-content .eyebrow {
+        font-size: 9px;
+        letter-spacing: 0.17em;
+        margin-bottom: 13px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+
+/* =========================================
+   iPHONE — NAVBAR FIX
+========================================= */
+
+@media (max-width: 500px) {
+
+    .navbar {
+        width: calc(100% - 24px);
+        margin: 12px auto 0;
+        padding: 9px 12px;
+        border-radius: 22px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    /* الشعار */
+    .brand {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+    /* الروابط */
+    .navbar nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .navbar nav a {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    /* زر اللغة */
+    .language-toggle {
+        flex-shrink: 0;
+        padding: 7px 10px;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+}
+
+
+/* الشاشات الصغيرة جدًا */
+@media (max-width: 380px) {
+
+    .navbar {
+        width: calc(100% - 16px);
+        padding: 8px 10px;
+        gap: 7px;
+    }
+
+    .brand {
+        width: 38px;
+        height: 38px;
+    }
+
+    .navbar nav {
+        gap: 7px;
+    }
+
+    .navbar nav a {
+        font-size: 9px;
+    }
+
+    .language-toggle {
+        padding: 6px 8px;
+        font-size: 9px;
+    }
+}
+
+/* =========================================
+   VIEW PROJECT — FULL BROWN PILL
+========================================= */
+
+.project-details-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    height: 38px;
+    padding: 0 18px;
+
+    background: var(--brown-dark);
+    color: #fff;
+
+    border: none;
+    border-radius: 999px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-details-trigger:hover {
+    background: var(--brown);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(62, 45, 34, 0.15);
+}
+
+
+/* السهم داخل الزر */
+.project-details-trigger .arrow-icon {
+    width: 18px;
+    height: 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+}
+
+.project-details-trigger .arrow-icon svg {
+    width: 14px;
+    height: 14px;
+
+    stroke: #fff;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* العربي */
+body.rtl .project-details-trigger {
+    flex-direction: row-reverse;
+}
+
+
+/* الجوال */
+@media (max-width: 700px) {
+
+    .project-details-trigger {
+        height: 36px;
+        padding: 0 17px;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .project-details-trigger .arrow-icon {
+        width: 17px;
+        height: 17px;
+    }
+
+    .project-details-trigger .arrow-icon svg {
+        width: 13px;
+        height: 13px;
+    }
+}
+
+.project-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: color 0.25s ease;
+}
+
+.project-github .arrow-icon {
+    width: 15px;
+    height: 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+}
+
+.project-github .arrow-icon svg {
+    width: 13px;
+    height: 13px;
+
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition: transform 0.25s ease;
+}
+
+.project-github:hover {
+    color: var(--brown-dark);
+}
+
+.project-github:hover .arrow-icon svg {
+    transform: translate(2px, -2px);
+}
+
+/* =========================
+   ABOUT DESCRIPTION ACTIONS
+========================= */
+
+.about-description {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.about-description .about-text {
+    margin: 0;
+}
+
+
+/* =========================
+   ABOUT BUTTONS
+========================= */
+
+.about-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+
+/* Download CV */
+
+.cv-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 40px;
+    padding: 0 17px;
+
+    border: 1px solid rgba(62, 45, 34, 0.22);
+    border-radius: 999px;
+
+    background: transparent;
+    color: var(--brown-dark);
+
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.cv-download svg {
+    width: 16px;
+    height: 16px;
+
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cv-download:hover {
+    background: var(--brown-dark);
+    color: #fff;
+    border-color: var(--brown-dark);
+    transform: translateY(-2px);
+}
+
+.nav-linkedin {
+    width: 30px;
+    height: 30px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--brown-dark);
+    color: #fff;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+
+    transition: all 0.25s ease;
+}
+
+.nav-linkedin svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-linkedin:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--beige, #f4efe8);
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+#loading-screen.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    width: min(360px, 75vw);
+    text-align: center;
+}
+
+.loader-brand {
+    margin-bottom: 28px;
+
+    color: var(--brown-dark, #3e2d22);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 0.35em;
+}
+
+.loader-line {
+    position: relative;
+
+    width: 100%;
+    height: 1px;
+
+    background: rgba(62, 45, 34, 0.15);
+
+    overflow: hidden;
+}
+
+.loader-line span {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+
+    background: var(--brown-dark, #3e2d22);
+
+    transition: width 0.1s linear;
+}
+
+.loader-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    color: var(--brown-dark, #3e2d22);
+
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+}
+
+#loader-percent {
+    font-variant-numeric: tabular-nums;
 }
